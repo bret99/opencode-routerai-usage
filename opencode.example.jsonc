@@ -1,0 +1,32 @@
+# RouterAI provider + TUI plugin configuration for OpenCode v2.
+#
+# Copy the "providers" block into ~/.config/opencode/opencode.jsonc and put
+# your key into the ROUTERAI_API_KEY environment variable.
+
+{
+  "$schema": "https://opencode.ai/config.json",
+  "model": "routerai/deepseek/deepseek-v4.1-flash-1017",
+  "providers": {
+    "routerai": {
+      "name": "RouterAI",
+      "package": "@opencode/ai/providers/openai-compatible",
+      "settings": {
+        "baseURL": "https://routerai.ru/api/v1",
+        "apiKey": "{env:ROUTERAI_API_KEY}"
+      },
+      "models": {
+        "deepseek/deepseek-v4.1-flash-1017": {
+          "name": "DeepSeek V4.1 Flash 1017",
+          "capabilities": {
+            "tools": true,
+            "input": ["text", "image"],
+            "output": ["text"]
+          },
+          "limit": {
+            "context": 1048576
+          }
+        }
+      }
+    }
+  }
+}
